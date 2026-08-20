@@ -1,0 +1,467 @@
+@charset "UTF-8";
+:root {
+  --bg:#0f172a;
+  --card:#111827;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --border:#334155;
+  --cell:#1f2937;
+  --cell2:#0b1220;
+  --danger:#ef4444;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --rme-bg: #0b1220;
+  --rme-panel: #0f1b31;
+  --rme-panel-2: #12203a;
+  --rme-text: #e7eefc;
+  --rme-muted: rgba(231, 238, 252, 0.7);
+  --rme-line: rgba(231, 238, 252, 0.12);
+  --rme-accent: #6ee7ff;
+  --rme-accent-2: #a7f3d0;
+  --rme-danger: #ff5b6e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page-index {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  gap: 50px;
+  padding: 24px;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(110, 231, 255, 0.1), transparent 60%), radial-gradient(1000px 700px at 80% 0%, rgba(167, 243, 208, 0.08), transparent 55%), #0b1220;
+  color: #e7eefc;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.index-title {
+  text-align: center;
+  font-size: 50px;
+}
+
+.index-list {
+  margin: 0;
+  display: grid;
+  gap: 20px;
+  text-align: center;
+  list-style: none;
+  font-size: 20px;
+}
+
+.index-list a {
+  color: #a78bfa;
+  text-decoration: none;
+}
+
+.index-list a:hover {
+  text-decoration: underline;
+}
+
+.page-minesweeper {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: linear-gradient(180deg, #0b1020, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page-minesweeper .app {
+  width: min(980px, 100%);
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.page-minesweeper header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.page-minesweeper header a {
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.page-minesweeper header a:hover {
+  border-color: #475569;
+  color: var(--text);
+}
+
+.page-minesweeper h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.page-minesweeper .panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.page-minesweeper .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: end;
+}
+
+.page-minesweeper label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.page-minesweeper input,
+.page-minesweeper select,
+.page-minesweeper button {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+
+.page-minesweeper input {
+  width: 120px;
+}
+
+.page-minesweeper select {
+  min-width: 160px;
+}
+
+.page-minesweeper button {
+  cursor: pointer;
+  background: #0b1220;
+  transition: transform 0.05s ease;
+}
+
+.page-minesweeper button:active {
+  transform: translateY(1px);
+}
+
+.page-minesweeper .stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.page-minesweeper .pill {
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.7);
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.page-minesweeper .pill strong {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.page-minesweeper .msg {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  min-height: 18px;
+}
+
+.page-minesweeper .msg b {
+  color: var(--text);
+}
+
+.page-minesweeper .boardWrap {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(2, 6, 23, 0.45);
+  overflow: auto;
+}
+
+.page-minesweeper .board {
+  display: grid;
+  gap: 6px;
+  width: max-content;
+  margin: auto;
+}
+
+.page-minesweeper .cell {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #1f2a3d;
+  background: linear-gradient(180deg, #111827, #0b1220);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.page-minesweeper .cell:focus {
+  outline: 2px solid #475569;
+  outline-offset: 2px;
+}
+
+.page-minesweeper .cell .revealed {
+  background: linear-gradient(180deg, #0b1220, #060b18);
+  border-color: #2b3a57;
+  cursor: default;
+}
+
+.page-minesweeper .cell .mine .revealed {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
+.page-minesweeper .cell .flagged {
+  border-color: rgba(245, 158, 11, 0.6);
+}
+
+.page-minesweeper .legend {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-sudoku {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: linear-gradient(180deg, #0b1020, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.sudokuApp {
+  width: min(980px, 100%);
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sudokuCard {
+  width: 100%;
+}
+
+.sudokuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.sudokuBack {
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.sudokuBack:hover {
+  border-color: #475569;
+  color: var(--text);
+}
+
+.sudokuTitle {
+  margin: 0;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.sudokuMuted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.sudokuControls {
+  display: flex;
+  gap: 10px 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px 0 14px;
+}
+
+.sudokuGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sudokuLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sudokuSelect {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  min-width: 220px;
+}
+
+.sudokuBtn {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  cursor: pointer;
+  transition: transform 0.05s ease, background 0.15s ease;
+}
+.sudokuBtn:active {
+  transform: translateY(1px);
+}
+.sudokuBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.sudokuBtnPrimary {
+  border-color: rgba(99, 179, 237, 0.45);
+  background: rgba(99, 179, 237, 0.22);
+}
+.sudokuBtnPrimary:hover {
+  background: rgba(99, 179, 237, 0.28);
+}
+
+.sudokuBtnDanger {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.18);
+}
+.sudokuBtnDanger:hover {
+  background: rgba(239, 68, 68, 0.24);
+}
+
+.sudokuGridWrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+/* Tablero 9x9 */
+.sudokuBoard {
+  --sCell: 42px;
+  display: grid;
+  grid-template-columns: repeat(9, var(--sCell));
+  grid-template-rows: repeat(9, var(--sCell));
+  width: fit-content;
+  margin: 0 auto;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* Celdas del Sudoku (inputs) */
+.sudokuCell {
+  width: var(--sCell);
+  height: var(--sCell);
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  outline: none;
+  appearance: none;
+}
+.sudokuCell:focus {
+  box-shadow: inset 0 0 0 2px rgba(99, 179, 237, 0.55);
+  background: rgba(99, 179, 237, 0.12);
+}
+.sudokuCell.given {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.sudokuCell.invalid {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(239, 68, 68, 0.45);
+}
+.sudokuCell {
+  /* líneas gordas subcuadrantes */
+}
+.sudokuCell.bR {
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+.sudokuCell.bB {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sudokuRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sudokuKbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.sudokuMessage {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sudokuMessage b {
+  color: var(--text);
+}/*# sourceMappingURL=style.css.map */
